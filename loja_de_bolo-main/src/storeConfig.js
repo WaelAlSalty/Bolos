@@ -1,7 +1,12 @@
+import abacaxiImg from '../assets/abacaxi.jpeg'; // Ajuste a extensão se for .png ou .jpeg
+import ninhoImg from '../assets/ninho.jpeg';
+import ninhoChocoImg from '../assets/ninho_com_chocolate.jpeg';
+import prestigioImg from '../assets/prestigio.jpeg';
+
 export const STORE_CONFIG = {
   nome: "NEXUS CAKE LAB",
   slogan: "CONFEITARIA ARTESANAL DE ALTA PRECISÃO",
-  telefoneWhatsApp: "5535988919468", // Altere para o número da cliente
+  telefoneWhatsApp: "5535988919468",
   instagram: "@nexus.cakelab",
   horario: "TER A SÁB • 09H ÀS 18H",
   bairro: "Minas Gerais, Brasil",
@@ -20,37 +25,37 @@ export const BOLOS = [
     id: 1, 
     categoria: "BOLOS INTEIROS", 
     tag: "MAIS VENDIDO", 
-    nome: 'Brigadeiro', 
-    preco: 10.00, 
-    desc: 'Massa aveludada ultra macia, recheada com cream cheese suave e toque sutil de baunilha de Madagascar.', 
-    img: 'https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=800&q=80' 
+    nome: 'Bolo de Abacaxi', 
+    preco: 60.00, 
+    desc: 'Massa aveludada ultra macia, recheada com creme suave e pedaços frescos de abacaxi.', 
+    img: abacaxiImg 
   },
   { 
     id: 2, 
     categoria: "BOLOS INTEIROS", 
     tag: "SUCESSO DE VENDAS", 
     nome: 'Bolo de Ninho', 
-    preco: 10.00, 
-    desc: 'Massa de baunilha, com irresistível brigadeiro de Ninho.', 
-    img: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=800&q=80' 
+    preco: 65.00, 
+    desc: 'Massa de baunilha, com irresistível brigadeiro cremoso de Leite Ninho.', 
+    img: ninhomImg 
   },
   { 
     id: 3, 
     categoria: "BOLOS INTEIROS", 
-    tag: "PREMIUM 70%", 
-    nome: 'Ninho com chocolate', 
-    preco: 10.00, 
-    desc: 'Massa de chocolate, com brigadeiro de chocolate e brigadeiro de Ninho.', 
-    img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80' 
+    tag: "PREMIUM", 
+    nome: 'Ninho com Chocolate', 
+    preco: 70.00, 
+    desc: 'Massa de chocolate nobre, intercalada com brigadeiro tradicional e brigadeiro de Ninho.', 
+    img: ninhoChocoImg 
   },
   { 
     id: 4, 
     categoria: "BOLOS INTEIROS", 
-    tag: "CLÁSSICO REVISITADO", 
-    nome: 'Bolo de Prosígio', 
-    preco: 10.00, 
-    desc: 'Massa de baunilha e chocolate, brigadeiro de côco e brigadeiro de chocolate.', 
-    img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80' 
+    tag: "CLÁSSICO", 
+    nome: 'Bolo Prestígio', 
+    preco: 65.00, 
+    desc: 'Massa de chocolate com recheio cremoso de coco (beijinho) e cobertura de chocolate.', 
+    img: prestigioImg 
   },
   { 
     id: 5, 
