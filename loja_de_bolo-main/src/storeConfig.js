@@ -1,4 +1,4 @@
-import abacaxiImg from '../assets/abacaxi.jpeg'; // Ajuste a extensão se for .png ou .jpeg
+import abacaxiImg from '../assets/abacaxi.jpeg';
 import ninhoImg from '../assets/ninho.jpeg';
 import ninhoChocoImg from '../assets/ninho_com_chocolate.jpeg';
 import prestigioImg from '../assets/prestigio.jpeg';
@@ -37,7 +37,7 @@ export const BOLOS = [
     nome: 'Bolo de Ninho', 
     preco: 65.00, 
     desc: 'Massa de baunilha, com irresistível brigadeiro cremoso de Leite Ninho.', 
-    img: ninhomImg 
+    img: ninhoImg 
   },
   { 
     id: 3, 
