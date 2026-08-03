@@ -1,93 +1,9 @@
 import React, { useState } from 'react';
-
-const PRODUCTS = [
-  {
-    id: 1,
-    name: 'Cyber Red Velvet Trufado',
-    category: 'BOLOS INTEIROS',
-    tag: 'MAIS VENDIDO 🔥',
-    scarcity: 'Apenas 3 unidades para hoje!',
-    description: 'Massa aveludada ultra macia, recheada com cream cheese suave e toque sutil de baunilha de Madagascar. Derrete na boca.',
-    price: 68.00,
-    image: 'https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=500&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 2,
-    name: 'Vulcão Ninho & Nutella Gold',
-    category: 'DESTAQUES',
-    tag: 'SUCESSO DE VENDAS ⭐',
-    scarcity: 'Últimas 2 fornadas',
-    description: 'Explosão irresistível de creme Ninho aveludado coberto com uma camada generosa de Nutella pura e avelãs tostadas.',
-    price: 75.00,
-    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 3,
-    name: 'Nero Choco Intense 70%',
-    category: 'BOLOS INTEIROS',
-    tag: 'PREMIUM 70% 🍫',
-    scarcity: 'Edição Gourmet',
-    description: 'Massa intensa de cacau nobre, ganache fluida 70% cacau e crisps crocantes de chocolate belga.',
-    price: 58.00,
-    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 4,
-    name: 'Fubá Cremoso & Flor de Sal',
-    category: 'BOLOS INTEIROS',
-    tag: 'RECEITA AFETIVA ☕',
-    scarcity: 'Saindo quentinho',
-    description: 'Bolo caseiro de milho com centro ultra cremoso, coberto por calda espessa de caramelo e flor de sal.',
-    price: 38.00,
-    image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=500&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 5,
-    name: 'Slice Pistache Suíço',
-    category: 'FATIAS & SOBREMESAS',
-    tag: 'ED. LIMITADA 💎',
-    scarcity: 'Esgotando rápido',
-    description: 'Fatia individual com massa leve de pistache, brigaderia artesanal de chocolate branco e pedaços crocantes de pistache.',
-    price: 22.00,
-    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 6,
-    name: 'Pote Gourmet Brownie & Ninho',
-    category: 'FATIAS & SOBREMESAS',
-    tag: 'PRONTA ENTREGA ⚡',
-    scarcity: 'Perfeito para o café',
-    description: 'Camadas generosas de brownie bem molhadinho alternadas com creme de Ninho aveludado.',
-    price: 18.00,
-    image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=500&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 7,
-    name: 'Cold Brew Vanilla Caramel 350ml',
-    category: 'BEBIDAS',
-    tag: 'REFRESCANTE ❄️',
-    scarcity: 'Extração 18h',
-    description: 'Café de grãos selecionados extraído a frio por 18h, harmonizado com xarope artesanal de baunilha.',
-    price: 14.00,
-    image: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=500&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 8,
-    name: 'Soda Italiana Frutas Vermelhas',
-    category: 'BEBIDAS',
-    tag: 'ARTESANAL 🍓',
-    scarcity: 'Xarope da Casa',
-    description: 'Bebida gaseificada natural com infusão de frutas vermelhas e xarope artesanal de amoras.',
-    price: 12.00,
-    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&auto=format&fit=crop&q=80'
-  }
-];
+import { STORE_INFO, CATEGORIES, PRODUCTS } from './storeConfig';
 
 export default function App() {
   const [quantities, setQuantities] = useState({});
   const [activeCategory, setActiveCategory] = useState('TODOS');
-
-  const categories = ['TODOS', 'DESTAQUES', 'BOLOS INTEIROS', 'FATIAS & SOBREMESAS', 'BEBIDAS'];
 
   const updateQuantity = (id, change) => {
     setQuantities(prev => {
@@ -107,7 +23,7 @@ export default function App() {
   const handleCheckout = () => {
     if (totalItems === 0) return;
     
-    let message = `*NOVO PEDIDO - NS DOCES*\n\n`;
+    let message = `*NOVO PEDIDO - ${STORE_INFO.name}*\n\n`;
     PRODUCTS.forEach(p => {
       if (quantities[p.id] > 0) {
         message += `• ${quantities[p.id]}x ${p.name} (R$ ${(p.price * quantities[p.id]).toFixed(2)})\n`;
@@ -117,7 +33,7 @@ export default function App() {
     message += `\n\n_Desejo prosseguir com o pagamento e entrega._`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/5500000000000?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/${STORE_INFO.whatsappNumber}?text=${encodedMessage}`, '_blank');
   };
 
   return (
@@ -125,17 +41,17 @@ export default function App() {
       {/* HEADER Persuasivo */}
       <header style={styles.header}>
         <div style={styles.badgeTop}>✨ FORNADA DO DIA PRONTA</div>
-        <h1 style={styles.title}>NS DOCES</h1>
-        <p style={styles.subtitle}>CONFEITARIA ARTESANAL DE ALTA PRECISÃO</p>
-        <p style={styles.info}>Minas Gerais, Brasil • TER A SÁB • 09H ÀS 18H</p>
+        <h1 style={styles.title}>{STORE_INFO.name}</h1>
+        <p style={styles.subtitle}>{STORE_INFO.subtitle}</p>
+        <p style={styles.info}>{STORE_INFO.info}</p>
         <div style={styles.socialProof}>
-          🔥 <b>+1.400 clientes satisfeitos</b> este mês. Peça o seu antes que acabe!
+          🔥 <b>{STORE_INFO.socialProof}</b>
         </div>
       </header>
 
       {/* FILTROS DE CATEGORIA */}
       <nav style={styles.nav}>
-        {categories.map(cat => (
+        {CATEGORIES.map(cat => (
           <button
             key={cat}
             style={{
@@ -190,7 +106,7 @@ export default function App() {
         })}
       </main>
 
-      {/* BARRA FIXA DE CARRINHO / CHECKOUT (Visual que induz ação) */}
+      {/* BARRA FIXA DE CARRINHO / CHECKOUT */}
       {totalItems > 0 && (
         <div style={styles.cartBar}>
           <div>
@@ -205,8 +121,8 @@ export default function App() {
 
       {/* FOOTER */}
       <footer style={styles.footer}>
-        <p>INSTAGRAM: @nexus.cakelab</p>
-        <p>© NS DOCES — Confeitaria Digital</p>
+        <p>INSTAGRAM: {STORE_INFO.instagram}</p>
+        <p>© {STORE_INFO.name} — Confeitaria Digital</p>
       </footer>
     </div>
   );
